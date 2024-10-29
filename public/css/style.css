@@ -1,0 +1,84 @@
+
+.spoken-word {
+	margin-top: 1em;
+	margin-bottom: 1em; 
+	border-radius:5px;
+}
+
+.spoken-word--active {
+	position: sticky;
+	top: 0.5em;
+}
+
+@media screen and ( min-width: 782px ) {
+	body.admin-bar .spoken-word--active {
+		top: calc( 0.5em + 32px );
+	}
+}
+
+@media screen and ( min-width: 600px ) and ( max-width: 781px ) {
+	body.admin-bar .spoken-word--active {
+		top: calc( 0.5em + 46px );
+	}
+}
+
+.spoken-word-playback-controls {
+	border: 0;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+    display: inline-flex;
+}
+.spoken-word-playback-controls__legend {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important; /* many screen reader and browser combinations announce broken words as they would appear visually */
+}
+
+.spoken-word-playback-controls__button {
+	line-height: 10px;
+    background: #368bcb !important;
+    border: 0px !important;
+    padding: 20px !important;
+    color: #fff !important;
+}
+.spoken-word-playback-controls__button--emoji {
+	font-family: "Apple Color Emoji", "Segoe UI Emoji", "NotoColorEmoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+}
+.spoken-word-playback-controls__dialog {
+	position: fixed;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 300px;
+	max-height: 100%;
+    border: 1px solid #368bcb;
+	overflow: auto;
+}
+.spoken-word-playback-close_button {
+    border: 1px solid #368bcb !important;
+    background: #368bcb !important;
+    color: #fff;
+    padding: 3px 20px;
+    line-height: 2;
+    border-radius: 5px;
+	margin-top:5px;
+}
+.spoken-word-playback-controls__label {
+	display: block;
+}
+.spoken-word-playback-controls__input {
+	display: block;
+	width: 100%;
+}
+.spoken-word-playback-controls__heading {
+	font-size: 1.2em;
+	font-weight: bold;
+}

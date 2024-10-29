@@ -1,0 +1,9 @@
+.elementor-element .icon .aivoov-logo {
+	width: 28px;
+	height: 28px;
+	display: inline-block;
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='512px' height='512px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'%3e%3ccircle fill='%230D64A6' cx='256.833' cy='254.833' r='248.833'/%3e%3cpath fill='%23FFFFFF' d='M86.009,376.925l80.745-264.259h74.507l80.745,264.259h-51.385l-71.933-233.062h9.539L137.39,376.925H86.009 z M134.455,321.873V275.26h81.027l14.613,46.613H134.455z'/%3e%3cpath fill='%23FFFFFF' d='M358.708,151.206v-44.045h49.914v44.045H358.708z M358.708,376.925V178.734h49.914v198.191H358.708z'/%3e%3c/svg%3e ");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}

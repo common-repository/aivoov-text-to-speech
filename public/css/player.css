@@ -1,0 +1,707 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:400,500,600|Poppins:400,600,700&display=swap);
+.aivoov_tts-audio-player {
+  box-sizing: content-box;
+  background-color: #e9e9e9;
+  text-align: center;
+  display: block;
+  height: 56px;
+  line-height: normal;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000000000;
+  min-width: 100%;
+}
+@media only screen and (max-width: 690px) {
+  .aivoov_tts-audio-player {
+    width: 100%;
+    text-align: left;
+  }
+  .aivoov_tts-audio-player .initial-player-screen {
+    height: 65px;
+    width: 100%;
+    padding: 12px 0 0;
+    box-sizing: inherit;
+  }
+  .aivoov_tts-audio-player .initial-player-screen.hidden {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1000;
+    left: -1000px;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .play-button {
+    display: inline-block;
+    background-image: url(../images/player/play-button.png);
+    background-size: 16px 17px;
+    background-position: 9px 9px;
+    background-repeat: no-repeat;
+    background-color: #000;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    margin-left: 10px;
+    margin-right: 8px;
+    text-align: center;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+  }
+  .aivoov_tts-audio-player .initial-player-screen .welcome-message {
+    display: none;
+    width: 80px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.03;
+    letter-spacing: -0.2px;
+    color: rgba(0, 0, 0, 0.87);
+    text-align: left;
+    vertical-align: top;
+    padding-top: 3px;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .welcome-message.sm {
+    display: inline-block;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .equalizer {
+    display: inline-block;
+    background-image: url(../images/player/sound-equalizer-min3.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+    width: calc(100% - 243px);
+    height: 34px;
+    -webkit-mask-image: -webkit-gradient(
+      linear,
+      center top,
+      right bottom,
+      from(#000),
+      to(rgba(0, 0, 0, 0.3))
+    );
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by {
+    display: none;
+    width: 87px;
+    height: 34px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 9px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.2px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+    vertical-align: top;
+    padding: 7px 10px 0 0;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by.sm {
+    display: inline-block;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by span {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by a {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by a:hover,
+  .aivoov_tts-audio-player .initial-player-screen .powered-by a:visited {
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .top-lane .title {
+    display: inline-block;
+    margin: auto;
+    width: 184px;
+    height: 16px;
+    opacity: 0.57;
+    font-family: Inter;
+    font-size: 11.6px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .aivoov_tts-audio-player .player-controls {
+    display: inline-block;
+    min-width: 180px;
+    width: calc(100% - 125px);
+    margin-top: 19px;
+    height: 62px;
+    vertical-align: top;
+  }
+  .aivoov_tts-audio-player .player-controls.hidden {
+    position: absolute;
+    z-index: -10000;
+    visibility: hidden;
+  }
+  .aivoov_tts-audio-player .player-controls progress {
+    vertical-align: middle;
+    width: calc(100% - 85px);
+  }
+  .aivoov_tts-audio-player .player-controls progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: rgba(0, 0, 0, 0.14);
+    color: #000;
+    height: 2px;
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    progress[value]::-webkit-progress-bar {
+    background-color: rgba(0, 0, 0, 0.14);
+    border: none;
+    color: #000;
+  }
+  .aivoov_tts-audio-player .player-controls progress::-webkit-progress-value {
+    background-color: #000;
+  }
+  .aivoov_tts-audio-player .player-controls p {
+    font-size: 1.6rem;
+  }
+  .aivoov_tts-audio-player .player-controls #start-time {
+    float: left;
+    left: 0;
+    top: 4px;
+    margin-right: 2px;
+  }
+  .aivoov_tts-audio-player .player-controls #end-time,
+  .aivoov_tts-audio-player .player-controls #start-time {
+    width: 35px;
+    position: relative;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.38;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .aivoov_tts-audio-player .player-controls #end-time {
+    right: -5px;
+  }
+  .aivoov_tts-audio-player .player-controls .bookmark,
+  .aivoov_tts-audio-player .player-controls .share {
+    display: none;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by {
+    display: inline-block;
+    position: relative;
+    float: right;
+    width: 130px;
+    height: 15px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 8px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.2px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+    vertical-align: top;
+    padding: 2px 15px 0 0;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by span {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by a {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by a:hover,
+  .aivoov_tts-audio-player .player-controls .powered-by a:visited {
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .control-buttons {
+    height: 62px;
+    margin-top: 12px;
+    width: 110px;
+    margin-left: 10px;
+    display: inline-block;
+  }
+  .aivoov_tts-audio-player .control-buttons.hidden {
+    position: absolute;
+    z-index: -10000;
+    left: -1000px;
+    visibility: hidden;
+  }
+  .aivoov_tts-audio-player #play-btn {
+    display: inline-block;
+    background-image: url(../images/player/play-button.png);
+    background-color: #000;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+  }
+  .aivoov_tts-audio-player #play-btn,
+  .aivoov_tts-audio-player #play-btn.pause {
+    background-size: 16px 17px;
+    background-position: 9px 9px;
+    background-repeat: no-repeat;
+  }
+  .aivoov_tts-audio-player #play-btn.pause {
+    background-image: url(../images/player/pause-button.png);
+  }
+  .aivoov_tts-audio-player #seek-bwd {
+    display: inline-block;
+    position: relative;
+    top: -6px;
+    width: 22px;
+    height: 25px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin-right: 6px;
+  }
+  .aivoov_tts-audio-player #seek-bwd img {
+    width: 22px;
+    height: 22px;
+  }
+  .aivoov_tts-audio-player #seek-fwd {
+    display: inline-block;
+    position: relative;
+    top: -6px;
+    width: 22px;
+    height: 25px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin-left: 6px;
+  }
+  .aivoov_tts-audio-player #seek-fwd img {
+    width: 22px;
+    height: 22px;
+  }
+  .aivoov_tts-audio-player .share-container {
+    visibility: hidden;
+    position: relative;
+    background-color: #e9e9e9;
+    z-index: 10001;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    width: 344px;
+    height: 120px;
+    top: -120px;
+  }
+  .aivoov_tts-audio-player .share-container:after {
+    content: "X";
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+    color: rgba(0, 0, 0, 0.87);
+    position: relative;
+    top: -28px;
+    left: 152px;
+  }
+}
+@media screen and (min-width: 691px) {
+  .aivoov_tts-audio-player {
+    width: 100%;
+  }
+  .aivoov_tts-audio-player .initial-player-screen {
+    height: 56px;
+    width: 100%;
+    padding-top: 12px;
+    box-sizing: inherit;
+  }
+  .aivoov_tts-audio-player .initial-player-screen.hidden {
+    position: absolute;
+    visibility: hidden;
+    z-index: -1000;
+    left: -1000px;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .play-button {
+    display: inline-block;
+    background-image: url(../images/player/play-button.png);
+    background-size: 16px 17px;
+    background-position: 9px 9px;
+    background-repeat: no-repeat;
+    background-color: #000;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    margin-left: 100px;
+    margin-right: 15px;
+    text-align: center;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+  }
+  .aivoov_tts-audio-player .initial-player-screen .welcome-message {
+    display: inline-block;
+    width: 240px;
+    font-family: Poppins;
+    font-size: 23.2px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.03;
+    letter-spacing: -0.2px;
+    color: rgba(0, 0, 0, 0.87);
+    text-align: left;
+    vertical-align: top;
+    padding-top: 6px;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .welcome-message.sm {
+    display: none;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .equalizer {
+    display: inline-block;
+    background-image: url(../images/player/sound-equalizer-min3.png);
+    background-repeat: repeat-x;
+    background-size: contain;
+    width: calc(100% - 607px);
+    height: 34px;
+    -webkit-mask-image: -webkit-gradient(
+      linear,
+      center top,
+      right bottom,
+      from(#000),
+      to(rgba(0, 0, 0, 0.3))
+    );
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by {
+    display: inline-block;
+    width: 182px;
+    height: 34px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 11.6px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.2px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+    vertical-align: top;
+    padding: 10px 20px 0 0;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by.sm {
+    display: none;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by span {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by a {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .initial-player-screen .powered-by a:hover,
+  .aivoov_tts-audio-player .initial-player-screen .powered-by a:visited {
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .player-controls {
+    display: inline-block;
+    float: left;
+    min-width: 300px;
+    width: calc(100% - 250px);
+    margin-top: 15px;
+  }
+  .aivoov_tts-audio-player .player-controls.hidden {
+    position: absolute;
+    z-index: -10000;
+    visibility: hidden;
+  }
+  .aivoov_tts-audio-player .player-controls #seek-obj-container progress {
+    vertical-align: middle;
+    min-width: 60px;
+    width: calc(100% - 360px);
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    #seek-obj-container
+    progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: rgba(0, 0, 0, 0.14);
+    color: #000;
+    height: 2px;
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    #seek-obj-container
+    progress[value]:hover {
+    color: #f55857;
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    #seek-obj-container
+    progress[value]::-webkit-progress-bar {
+    background-color: rgba(0, 0, 0, 0.14);
+    border: none;
+    color: #000;
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    #seek-obj-container
+    progress[value]::-webkit-progress-bar:hover {
+    color: #f55857;
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    #seek-obj-container
+    progress::-webkit-progress-value {
+    background-color: #000;
+  }
+  .aivoov_tts-audio-player
+    .player-controls
+    #seek-obj-container
+    progress::-webkit-progress-value:hover {
+    color: #f55857;
+  }
+  .aivoov_tts-audio-player .player-controls #seek-obj-container p {
+    font-size: 1.6rem;
+  }
+  .aivoov_tts-audio-player .player-controls #start-time {
+    float: left;
+    left: 43px;
+    top: 4px;
+    margin-right: 20px;
+  }
+  .aivoov_tts-audio-player .player-controls #end-time,
+  .aivoov_tts-audio-player .player-controls #start-time {
+    width: 35px;
+    position: relative;
+    font-family: Inter;
+    font-size: 10px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.38;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .aivoov_tts-audio-player .player-controls #end-time {
+    right: -15px;
+  }
+  .aivoov_tts-audio-player .player-controls .bookmark {
+    position: relative;
+    left: 25px;
+    width: 18px;
+    height: 20px;
+    -webkit-filter: invert(0.7);
+    filter: invert(0.7);
+  }
+  .aivoov_tts-audio-player .player-controls .bookmark img {
+    width: 18px;
+    height: 20px;
+  }
+  .aivoov_tts-audio-player .player-controls .share {
+    position: relative;
+    left: 35px;
+    width: 18px;
+    height: 20px;
+    color: rgba(0, 0, 0, 0.54);
+    cursor: pointer;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by {
+    display: inline-block;
+    float: right;
+    width: 185px;
+    height: 34px;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 11.6px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.38;
+    letter-spacing: 0.2px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.5);
+    vertical-align: top;
+    padding: 3px 20px 0 0;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by span {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by a {
+    font-family: Poppins;
+    font-weight: 600;
+    color: #675759;
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .player-controls .powered-by a:hover,
+  .aivoov_tts-audio-player .player-controls .powered-by a:visited {
+    text-decoration: none;
+  }
+  .aivoov_tts-audio-player .control-buttons {
+    height: 62px;
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 50px;
+    display: inline-block;
+    float: left;
+  }
+  .aivoov_tts-audio-player .control-buttons.hidden {
+    position: absolute;
+    z-index: -10000;
+    left: -1000px;
+    visibility: hidden;
+  }
+  .aivoov_tts-audio-player #play-btn {
+    display: inline-block;
+    background-image: url(../images/player/play-button.png);
+    background-color: #000;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.75);
+  }
+  .aivoov_tts-audio-player #play-btn,
+  .aivoov_tts-audio-player #play-btn.pause {
+    background-size: 16px 17px;
+    background-position: 9px 9px;
+    background-repeat: no-repeat;
+  }
+  .aivoov_tts-audio-player #play-btn.pause {
+    background-image: url(../images/player/pause-button.png);
+  }
+  .aivoov_tts-audio-player #seek-bwd {
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    width: 22px;
+    height: 25px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+  .aivoov_tts-audio-player #seek-bwd img {
+    width: 22px;
+    height: 22px;
+  }
+  .aivoov_tts-audio-player #seek-fwd {
+    display: inline-block;
+    position: relative;
+    top: -5px;
+    width: 22px;
+    height: 25px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    margin-left: 10px;
+  }
+  .aivoov_tts-audio-player #seek-fwd img {
+    width: 22px;
+    height: 22px;
+  }
+  .aivoov_tts-audio-player .share-container {
+    visibility: hidden;
+    position: relative;
+    background-color: #e9e9e9;
+    z-index: 10001;
+    border-radius: 15px;
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 120px;
+    top: -119px;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+  .aivoov_tts-audio-player .share-container .close-button {
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    font-family: Inter;
+    font-size: 18px;
+    opacity: 0.5;
+    color: rgba(0, 0, 0, 0.87);
+    position: relative;
+    float: right;
+    top: -3px;
+    right: 15px;
+  }
+  .aivoov_tts-audio-player .share-container .title {
+    height: 15px;
+    margin-top: 10px;
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.13px;
+    text-align: center;
+    color: #666;
+  }
+  .aivoov_tts-audio-player .share-container .social-icon {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    width: 56px;
+    height: 56px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.75);
+    margin: 0 6px;
+  }
+  .aivoov_tts-audio-player .share-container .social-icon img {
+    margin-top: 16px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.n-audio-player{
+  margin-bottom: 2em;
+}
+.audio_player {
+    position: relative;
+}
+.powerd_by p {
+    margin: 0 !important;
+    font-family: monospace;
+    position: relative;
+    font-size: 12px;
+    padding: 0 !important;
+    line-height: 1.5 !important;
+}
+.powerd_by {
+	float: right;
+	position: absolute;
+	right: 10px;
+	letter-spacing: 1px;
+	margin-top: -20px;
+}
+.powerd_by p a {
+	text-decoration: none !important;
+} 
+.plyr__controls__item.plyr__menu {
+    display: none;
+} 
+.plyr--audio .plyr__controls{ 
+	padding: 10px;
+	border-radius: 10px;
+}
+.aivoov_tts-audio-player .plyr--audio .plyr__controls{ 
+	border-radius: 0px;
+}
+button.plyr__control{
+	background:transparent !important;
+}
+.plyr__controls .plyr__controls__item:first-child {
+	margin-left: 0;
+	margin-right: auto; 
+	padding: 10px;
+	color: white;
+	border-radius: 50%;
+} 
